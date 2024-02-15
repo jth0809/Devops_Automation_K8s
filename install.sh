@@ -17,6 +17,13 @@ sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 
+echo "restarting kubelet"
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet
+
+echo "starting kubeadm"
+kubeadm init
+
 echo "install jenkins on k8s"
 helm repo add jenkins https://charts.jenkins.io
 helm repo update
