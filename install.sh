@@ -1,8 +1,10 @@
 KUBERNETES_VERSION=v1.29
 PROJECT_PATH=prerelease:/main
+echo ' '
 echo "Update Linux"
 sudo apt-get -qq update
 
+echo ' '
 echo "install helm"
 sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
 sudo curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
@@ -11,7 +13,10 @@ sudo apt-get -qq update
 sudo apt-get -y install helm
 
 sudo swapoff -a && sudo sed -i '/swap/s/^/#/' /etc/fstab
+sudo modprobe br_netfilter
+sudo sysctl -w net.ipv4.ip_forward=1
 
+echo ' '
 echo "install cri-o podman kubelet kubeadm kubectl"
 sudo curl -fsSL https://pkgs.k8s.io/core:/stable:/$KUBERNETES_VERSION/deb/Release.key |
     gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
@@ -29,14 +34,12 @@ sudo apt-get update
 sudo apt-get install -y cri-o podman kubelet kubeadm kubectl 
 sudo apt-mark hold cri-o podman kubelet kubeadm kubectl
 
-
+echo ' '
 echo "restarting services"
 sudo systemctl daemon-reload
 sudo systemctl start crio.service
 sudo systemctl restart kubelet
-sudo swapoff -a
-sudo modprobe br_netfilter
-sudo sysctl -w net.ipv4.ip_forward=1
+
 
 echo "starting kubeadm"
 kubeadm init
