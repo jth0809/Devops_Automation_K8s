@@ -42,7 +42,7 @@ sudo systemctl restart kubelet
 
 echo ' '
 echo "starting kube"
-kubeadm init
+sudo kubeadm init
 
 echo ' '
 echo "add helm repos"
