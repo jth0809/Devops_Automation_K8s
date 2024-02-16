@@ -40,10 +40,19 @@ sudo systemctl daemon-reload
 sudo systemctl start crio.service
 sudo systemctl restart kubelet
 
-
-echo "starting kubeadm"
+echo ' '
+echo "starting kube"
 kubeadm init
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+helm repo add projectcalico https://docs.tigera.io/calico/charts
+kubectl create namespace tigera-operator
+helm install calico projectcalico/tigera-operator --version v3.27.0 --namespace tigera-operator
 
+
+
+echo ' '
 echo "install jenkins on k8s"
 helm repo add jenkins https://charts.jenkins.io
 helm repo update
