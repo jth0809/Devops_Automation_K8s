@@ -47,11 +47,8 @@ sudo kubeadm init
 echo ' '
 echo "create .kube"
 mkdir -p $HOME/.kube
-cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-chown $(id -u):$(id -g) $HOME/.kube/config
-
-sudo kubectl taint nodes --all node-role.kubernetes.io/control-plane-
-sudo kubectl port-forward service/argo-argocd-server -n default 8080:443
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 echo ' '
 echo "add helm repos"
@@ -65,3 +62,5 @@ helm repo update
 helm install calico projectcalico/tigera-operator --version v3.27.0 --namespace tigera-operator
 helm install argo argo/argo-cd
 
+sudo kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+sudo kubectl port-forward service/argo-argocd-server -n default 8080:443
