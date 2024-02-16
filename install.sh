@@ -80,4 +80,4 @@ sudo kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 
 echo "wait for argo-cd to start"
 sleep 100
-sudo kubectl port-forward service/argo-argocd-server -n default 8080:443
+sudo kubectl port-forward service/argo-argocd-server -n default 8080:443 &
