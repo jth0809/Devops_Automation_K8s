@@ -63,5 +63,5 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 sudo kubectl taint nodes --all node-role.kubernetes.io/control-plane-
-sudo kubectl port-forward service/argo-argocd-server -n argo 8080:443
+sudo kubectl port-forward service/argo-argocd-server -n default 8080:443
 
