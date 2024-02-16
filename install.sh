@@ -58,8 +58,9 @@ helm install argo argo/argo-cd
 
 echo ' '
 echo "create .kube"
-
-export KUBECONFIG=/etc/kubernetes/admin.conf
+mkdir -p $HOME/.kube
+cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config
 
 sudo kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 sudo kubectl port-forward service/argo-argocd-server -n default 8080:443
