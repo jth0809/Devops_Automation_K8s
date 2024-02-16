@@ -62,6 +62,7 @@ helm repo update
 helm install calico projectcalico/tigera-operator --version v3.27.0 --namespace tigera-operator
 helm install argo argo/argo-cd
 
+echo "wait for argo-cd to start"
 sleep 100
 
 sudo kubectl taint nodes --all node-role.kubernetes.io/control-plane-
