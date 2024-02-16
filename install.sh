@@ -46,16 +46,18 @@ kubeadm init
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
 helm repo add projectcalico https://docs.tigera.io/calico/charts
-kubectl create namespace tigera-operator
-helm install calico projectcalico/tigera-operator --version v3.27.0 --namespace tigera-operator
-
-
-
-echo ' '
-echo "install jenkins on k8s"
+helm repo add argo https://argoproj.github.io/argo-helm
 helm repo add jenkins https://charts.jenkins.io
+
+
+kubectl create namespace tigera-operator
+
 helm repo update
+helm install calico projectcalico/tigera-operator --version v3.27.0 --namespace tigera-operator
 helm install jenkins jenkins/jenkins
+helm install argo argo/argo-cd
+
 
 
