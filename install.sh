@@ -43,10 +43,14 @@ sudo systemctl restart kubelet
 echo ' '
 echo "starting kube"
 kubeadm init
+echo ' '
+echo "create .kube"
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
+echo ' '
+echo "add helm repos"
 helm repo add projectcalico https://docs.tigera.io/calico/charts
 helm repo add argo https://argoproj.github.io/argo-helm
 
