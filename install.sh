@@ -56,7 +56,7 @@ sudo systemctl restart kubelet
 
 echo ' '
 echo "starting kube"
-sudo kubeadm init
+sudo kubeadm init --apiserver-advertise-address=192.168.137.104 --pod-network-cidr=192.168.0.0/16
 
 echo ' '
 echo "create .kube"
