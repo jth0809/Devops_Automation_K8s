@@ -1,6 +1,6 @@
 dependencies:
-- name: minio
-  repository: https://helm.min.io/
-  version: 8.0.9
-digest: sha256:0f43ad0a4b4e9af47615ef3da85054712eb28f154418d96b7b974a095cc19260
-generated: "2021-01-13T15:31:40.823086-08:00"
+- name: redis-ha
+  repository: https://dandydeveloper.github.io/charts/
+  version: 4.29.4
+digest: sha256:1257baf1c5e0db036af659d44095223e28ac0c9ec1ed8300a02d5def2281c9c7
+generated: "2024-11-13T09:07:36.494128+09:00"
