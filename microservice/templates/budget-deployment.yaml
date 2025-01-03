@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.budget.environment.SERVICE_NAME }}
+  namespace: {{ .Values.app.namespace }}
+spec:
+  replicas: {{ .Values.budget.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.budget.environment.SERVICE_NAME }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.budget.environment.SERVICE_NAME }}
+    spec:
+      containers:
+      - name: {{ .Values.budget.environment.SERVICE_NAME }}
+        image: {{.Values.budget.image}}
+        env:
+        - name: SERVER_PORT
+          value: "8080"
+        envFrom:
+        - configMapRef:
+            name: app-config
+        - secretRef:
+            name: app-secrets
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: {{ .Values.app.imagePullSecrets }}

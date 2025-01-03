@@ -1,0 +1,194 @@
+# Default values for microservice.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: jdh0809/easytrip
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "nginx"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 443
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+# Additional volumes on the output Deployment definition.
+volumes: []
+# - name: foo
+#   secret:
+#     secretName: mysecret
+#     optional: false
+
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts: []
+# - name: foo
+#   mountPath: "/etc/foo"
+#   readOnly: true
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+nginx:
+  name: nginx
+  image: jdh0809/easytrip:nginx
+  replicas: 1
+  ports:
+    - name: https
+      containerPort: 443
+  configMap: nginx-conf
+
+app:
+  namespace: easytrip
+  imagePullSecrets: regcred
+  environment:
+    POST_URL: ${POST_URL}
+    BUDGET_URL: ${BUDGET_URL}
+    PLAN_URL: ${PLAN_URL}
+    MEMBER_URL: ${MEMBER_URL}
+    REDIS_HOST: ${REDIS_HOST}
+    REDIS_PORT: ${REDIS_PORT}
+    REDIS_PASSWORD: ${REDIS_PASSWORD}
+    RABBITMQ_HOST: ${RABBITMQ_HOST}
+    RABBITMQ_PORT: ${RABBITMQ_PORT}
+    RABBITMQ_USERNAME: ${RABBITMQ_USERNAME}
+    RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
+    ISSUER_URI: ${ISSUER_URI}
+    POSTGRES_URL: ${POSTGRES_URL}
+    POSTGRES_USER: ${POSTGRES_USER}
+    POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    AWS_CLIENT_ID: ${AWS_CLIENT_ID}
+    AWS_CLIENT_SECRET: ${AWS_CLIENT_SECRET}
+    MONGODB_URI: ${MONGODB_URI}
+    MONGODB_DATABASE: ${MONGODB_DATABASE}
+  volumeMounts:
+    - name: config-volume
+      mountPath: /etc/config
+
+budget:
+  image: jdh0809/easytrip:budget
+  replicas: 1
+  ports:
+    - name: http
+      containerPort: 8080
+  environment:
+    SERVICE_NAME: budget
+    SERVER_PORT: 8080
+
+edge:
+  image: jdh0809/easytrip:edge
+  replicas: 1
+  ports:
+    - name: http
+      containerPort: 8081
+  environment:
+    SERVICE_NAME: edge
+    SERVER_PORT: 8081
+
+plan:
+  image: jdh0809/easytrip:plan
+  replicas: 1
+  ports:
+    - name: http
+      containerPort: 8082
+  environment:
+    SERVICE_NAME: plan
+    SERVER_PORT: 8082
+
+member:
+  image: jdh0809/easytrip:member
+  replicas: 1
+  ports:
+    - name: http
+      containerPort: 8083
+  environment:
+    SERVICE_NAME: member
+    SERVER_PORT: 8083
+
+orchestration:
+  image: jdh0809/easytrip:orchestration
+  replicas: 1
+  ports:
+    - name: http
+      containerPort: 8084
+  environment:
+    SERVICE_NAME: orchestration
+    SERVER_PORT: 8084
+
+post:
+  image: jdh0809/easytrip:post
+  replicas: 1
+  ports:
+    - name: http
+      containerPort: 8085
+  environment:
+    SERVICE_NAME: post
+    SERVER_PORT: 8085

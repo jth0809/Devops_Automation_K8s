@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.plan.environment.SERVICE_NAME }}
+  namespace: {{ .Values.app.namespace }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+  - port: {{ .Values.plan.environment.SERVER_PORT }}
+    targetPort: {{ .Values.plan.environment.SERVER_PORT }}
+  selector:
+    app: {{ .Values.plan.environment.SERVICE_NAME }}

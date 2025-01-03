@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.post.environment.SERVICE_NAME }}
+  namespace: {{ .Values.app.namespace }}
+spec:
+  replicas: {{ .Values.post.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.post.environment.SERVICE_NAME }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.post.environment.SERVICE_NAME }}
+    spec:
+      containers:
+      - name: {{ .Values.post.environment.SERVICE_NAME }}
+        image: {{.Values.post.image}}
+        env:
+        - name: SERVER_PORT
+          value: "8085"
+        envFrom:
+        - configMapRef:
+            name: app-config
+        - secretRef:
+            name: app-secrets
+        ports:
+        - containerPort: 8085
+      imagePullSecrets:
+      - name: {{ .Values.app.imagePullSecrets }}

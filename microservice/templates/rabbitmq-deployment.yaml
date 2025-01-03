@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq
+  namespace: easytrip
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+    spec:
+      containers:
+      - name: rabbitmq
+        image: rabbitmq:management
+        env:
+        - name: RABBITMQ_MANAGEMENT_ENABLE
+          value: "true"
+        - name: RABBITMQ_DEFAULT_USER
+          value: test
+        - name: RABBITMQ_DEFAULT_PASS
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: rabbitmq-password
+        ports:
+        - containerPort: 5672

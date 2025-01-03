@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  namespace: easytrip
+spec:
+  selector:
+    app: {{ .Values.nginx.name }}
+  ports:
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 443
+      nodePort: 30443
+  externalIPs:
+    - 121.164.131.58
+  type: NodePort
