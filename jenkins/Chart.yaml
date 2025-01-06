@@ -1,14 +1,14 @@
 annotations:
   artifacthub.io/category: integration-delivery
   artifacthub.io/changes: |
-    - Update `docker.io/kiwigrid/k8s-sidecar` to version `docker.io/kiwigrid/k8s-sidecar`
+    - Update `configuration-as-code` to version `1909.vb_b_f59a_27d013`
   artifacthub.io/images: |
     - name: jenkins
-      image: docker.io/jenkins/jenkins:2.426.3-jdk17
+      image: docker.io/jenkins/jenkins:2.479.2-jdk17
     - name: k8s-sidecar
-      image: docker.io/kiwigrid/k8s-sidecar:1.25.4
+      image: docker.io/kiwigrid/k8s-sidecar:1.28.4
     - name: inbound-agent
-      image: jenkins/inbound-agent:3206.vb_15dcf73f6a_9-3
+      image: jenkins/inbound-agent:3273.v4cfe589b_fd83-1
   artifacthub.io/license: Apache-2.0
   artifacthub.io/links: |
     - name: Chart Source
@@ -18,11 +18,11 @@ annotations:
     - name: support
       url: https://github.com/jenkinsci/helm-charts/issues
 apiVersion: v2
-appVersion: 2.426.3
-description: Jenkins - Build great things at any scale! The leading open source automation
-  server, Jenkins provides over 1800 plugins to support building, deploying and automating
-  any project.
-home: https://jenkins.io/
+appVersion: 2.479.2
+description: 'Jenkins - Build great things at any scale! As the leading open source
+  automation server, Jenkins provides over 1800 plugins to support building, deploying
+  and automating any project. '
+home: https://www.jenkins.io/
 icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
 keywords:
 - jenkins
@@ -45,4 +45,5 @@ sources:
 - https://github.com/jenkinsci/docker-inbound-agent
 - https://github.com/maorfr/kube-tasks
 - https://github.com/jenkinsci/configuration-as-code-plugin
-version: 5.0.13
+type: application
+version: 5.7.26

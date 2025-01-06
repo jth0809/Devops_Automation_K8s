@@ -23,8 +23,13 @@ _See [`helm repo`](https://helm.sh/docs/helm/helm_repo/) for command documentati
 ## Install Chart
 
 ```console
-# Helm 3
-$ helm install [RELEASE_NAME] jenkins/jenkins [flags]
+helm install [RELEASE_NAME] jenkins/jenkins [flags]
+```
+
+Since version `5.6.0` the chart is available as an OCI image and can be installed using:
+
+```console
+helm install [RELEASE_NAME] oci://ghcr.io/jenkinsci/helm-charts/jenkins [flags]
 ```
 
 _See [configuration](#configuration) below._
@@ -70,7 +75,7 @@ To see all configurable options with detailed comments, visit the chart's [value
 $ helm show values jenkins/jenkins
 ```
 
-For a summary of all configurable options, see [VALUES_SUMMARY.md](https://github.com/jenkinsci/helm-charts/blob/main/charts/jenkins/VALUES_SUMMARY.md).
+For a summary of all configurable options, see [VALUES.md](https://github.com/jenkinsci/helm-charts/blob/main/charts/jenkins/VALUES.md).
 
 ### Configure Security Realm and Authorization Strategy
 
@@ -424,7 +429,7 @@ controller:
   # the 'name' and 'keyName' are concatenated with a '-' in between, so for example:
   # an existing secret "secret-credentials" and a key inside it named "github-password" should be used in Jcasc as ${secret-credentials-github-password}
   # 'name' and 'keyName' must be lowercase RFC 1123 label must consist of lower case alphanumeric characters or '-',
-  # and must start and end with an alphanumeric character (e.g. 'my-name',  or '123-abc')
+  # and must start and end with an alphanumeric character (e.g. 'my-name', or '123-abc')
   # existingSecret existing secret "secret-credentials" and a key inside it named "github-username" should be used in Jcasc as ${github-username}
   # When using existingSecret no need to specify the keyName under additionalExistingSecrets.
   existingSecret: secret-credentials
@@ -494,7 +499,7 @@ RBAC is enabled by default. If you want to disable it you will need to set `rbac
 
 It is possible to add custom pod templates for the default configured kubernetes cloud.
 Add a key under `agent.podTemplates` for each pod template. Each key (prior to `|` character) is just a label, and can be any value.
-Keys are only used to give the pod template a meaningful name.  The only restriction is they may only contain RFC 1123 \ DNS label characters: lowercase letters, numbers, and hyphens. Each pod template can contain multiple containers.
+Keys are only used to give the pod template a meaningful name. The only restriction is they may only contain RFC 1123 \ DNS label characters: lowercase letters, numbers, and hyphens. Each pod template can contain multiple containers.
 There's no need to add the _jnlp_ container since the kubernetes plugin will automatically inject it into the pod.
 For this pod templates configuration to be loaded the following values must be set:
 
@@ -609,10 +614,10 @@ controller:
 If you want to expose Prometheus metrics you need to install the [Jenkins Prometheus Metrics Plugin](https://github.com/jenkinsci/prometheus-plugin).
 It will expose an endpoint (default `/prometheus`) with metrics where a Prometheus Server can scrape.
 
-If you have implemented [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator), you can set `master.prometheus.enabled` to `true` to configure a `ServiceMonitor` and `PrometheusRule`.
-If you want to further adjust alerting rules you can do so by configuring `master.prometheus.alertingrules`
+If you have implemented [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator), you can set `controller.prometheus.enabled` to `true` to configure a `ServiceMonitor` and `PrometheusRule`.
+If you want to further adjust alerting rules you can do so by configuring `controller.prometheus.alertingrules`
 
-If you have implemented Prometheus without using the operator, you can leave `master.prometheus.enabled` set to `false`.
+If you have implemented Prometheus without using the operator, you can leave `controller.prometheus.enabled` set to `false`.
 
 ### Running Behind a Forward Proxy
 

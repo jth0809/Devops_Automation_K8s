@@ -67,6 +67,10 @@ spec:
       affinity:
 {{ toYaml .Values.controller.affinity | indent 8 }}
       {{- end }}
+      {{- if .Values.controller.topologySpreadConstraints }}
+      topologySpreadConstraints:
+{{ toYaml .Values.controller.topologySpreadConstraints | indent 8 }}
+      {{- end }}
       {{- if quote .Values.controller.terminationGracePeriodSeconds }}
       terminationGracePeriodSeconds: {{ .Values.controller.terminationGracePeriodSeconds }}
       {{- end }}
@@ -76,9 +80,12 @@ spec:
       {{- if .Values.controller.shareProcessNamespace }}
       shareProcessNamespace: true
       {{- end }}
+      {{- if not .Values.controller.enableServiceLinks }}
+      enableServiceLinks: false
+      {{- end }}
 {{- if .Values.controller.usePodSecurityContext }}
       securityContext:
-  {{- if hasKey .Values.controller "podSecurityContextOverride" }}
+  {{- if kindIs "map" .Values.controller.podSecurityContextOverride }}
     {{- tpl (toYaml .Values.controller.podSecurityContextOverride | nindent 8) . -}}
   {{- else }}
     {{/* The rest of this section should be replaced with the contents of this comment one the runAsUser, fsGroup, and securityContextCapabilities Helm chart values have been removed:
@@ -321,6 +328,13 @@ spec:
 {{- if .Values.persistence.volumes }}
 {{ tpl (toYaml .Values.persistence.volumes | indent 6) . }}
 {{- end }}
+      {{- if .Values.controller.sidecars.configAutoReload.logging.configuration.override }}
+      - name: auto-reload-config
+        configMap:
+          name: {{ template "jenkins.fullname" . }}-auto-reload-config
+      - name: auto-reload-config-logs
+        emptyDir: {}
+      {{- end }}
       {{- if .Values.controller.installPlugins }}
       {{- if .Values.controller.overwritePluginsFromImage }}
       - name: plugins

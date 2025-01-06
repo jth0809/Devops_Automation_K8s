@@ -12,9 +12,423 @@ Use the following links to reference issues, PRs, and commits prior to v2.6.0.
 The changelog until v1.5.7 was auto-generated based on git commits.
 Those entries include a reference to the git commit to be able to get more details.
 
+## 5.7.26
+
+Update `configuration-as-code` to version `1909.vb_b_f59a_27d013`
+
+## 5.7.25
+
+Update `kubernetes` to version `4306.vc91e951ea_eb_d`
+
+## 5.7.24
+
+Update `kubernetes` to version `4304.v1b_39d4f98210`
+
+## 5.7.23
+
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.28.4`
+
+## 5.7.22
+
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.28.3`
+
+## 5.7.21
+
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.28.1`
+
+## 5.7.20
+
+Update `kubernetes` to version `4302.va_756e4b_67715`
+
+## 5.7.19
+
+Update `configuration-as-code` to version `1903.v004d55388f30`
+
+## 5.7.18
+
+Update `kubernetes` to version `4300.vd82c5692b_3a_e`
+
+## 5.7.17
+
+Update `docker.io/bats/bats` to version `1.11.1`
+
+## 5.7.16
+
+Add tpl support for persistence.storageClassName in home-pvc.yaml  and tpl support in controller.ingress parameters(ingressClassName, annotations, hostname) in jenkins-controller-ingress.yaml
+
+## 5.7.15
+
+Update `jenkins/jenkins` to version `2.479.2-jdk17`
+
+## 5.7.14
+
+Update `kubernetes` to version `4296.v20a_7e4d77cf6`
+
+## 5.7.13
+
+Update `configuration-as-code` to version `1897.v79281e066ea_7`
+
+## 5.7.12
+
+Update `configuration-as-code` to version `1887.v9e47623cb_043`
+
+## 5.7.11
+
+Update `git` to version `5.6.0`
+
+## 5.7.10
+
+Update `jenkins/jenkins` to version `2.479.1-jdk17`
+
+## 5.7.9
+
+Update `configuration-as-code` to version `1873.vea_5814ca_9c93`
+
+## 5.7.8
+
+Update `jenkins/inbound-agent` to version `3273.v4cfe589b_fd83-1`
+
+## 5.7.7
+
+Update `kubernetes` to version `4295.v7fa_01b_309c95`
+
+## 5.7.5
+
+Fix helm release deployment with flux revision reconciliation
+
+## 5.7.4
+
+Update `kubernetes` to version `4292.v11898cf8fa_66`
+
+## 5.7.3
+
+Update `git` to version `5.5.2`
+
+## 5.7.2
+
+Update `jenkins/jenkins` to version `2.462.3-jdk17`
+
+## 5.7.1
+
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.28.0`
+
+## 5.7.0
+
+Add RBAC support for using the `nonroot` and `nonroot-v2` `SecurityContextConstraints` on OpenShift.
+
+## 5.6.5
+
+Update `kubernetes` to version `4290.v93ea_4b_b_26a_61`
+
+## 5.6.4
+
+Update `git` to version `5.5.1`
+
+## 5.6.3
+
+Update `git` to version `5.5.0`
+
+## 5.6.2
+
+Update `kubernetes` to version `4288.v1719f9d0c854`
+
+## 5.6.1
+
+Documentation about OCI installation
+
+## 5.6.0
+
+Helm chart is also now deployed on GitHub packages and can be installed from `oci://ghcr.io/jenkinsci/helm-charts/jenkins`
+
+## 5.5.16
+
+Update `kubernetes` to version `4287.v73451380b_576`
+
+## 5.5.15
+
+Add support for `controller.enableServiceLinks` to disable service links in the controller pod.
+
+## 5.5.14
+
+Update `jenkins/jenkins` to version `2.462.2-jdk17`
+
+## 5.5.13
+
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.27.6`
+
+## 5.5.12
+
+Update `configuration-as-code` to version `1850.va_a_8c31d3158b_`
+
+## 5.5.11
+
+Update `configuration-as-code` to version `1849.v3a_d20568000a_`
+
+## 5.5.10
+
+Update `git` to version `5.4.1`
+
+## 5.5.9
+
+Update `git` to version `5.4.0`
+
+## 5.5.8
+
+Add `agent.garbageCollection` to support setting [kubernetes plugin garbage collection](https://plugins.jenkins.io/kubernetes/#plugin-content-garbage-collection-beta).
+
+## 5.5.7
+
+Update `kubernetes` to version `4285.v50ed5f624918`
+
+## 5.5.6
+
+Add `agent.useDefaultServiceAccount` to support omitting setting `serviceAccount` in the default pod template from `serviceAgentAccount.name`.
+Add `agent.serviceAccount` to support setting the default pod template value.
+
+## 5.5.5
+
+Update `jenkins/inbound-agent` to version `3261.v9c670a_4748a_9-1`
+
+## 5.5.4
+
+Update `jenkins/jenkins` to version `2.462.1-jdk17`
+
+## 5.5.3
+
+Update `git` to version `5.3.0`
+
+## 5.5.2
+
+Update `kubernetes` to version `4280.vd919fa_528c7e`
+
+## 5.5.1
+
+Update `kubernetes` to version `4265.v78b_d4a_1c864a_`
+
+## 5.5.0
+
+Introduce capability of set skipTlsVerify and usageRestricted flags in additionalClouds
+
+
+## 5.4.4
+
+Update CHANGELOG.md, README.md, and UPGRADING.md for linting
+
+## 5.4.3
+
+Update `configuration-as-code` to version `1836.vccda_4a_122a_a_e`
+
+## 5.4.2
+
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.27.5`
+
+## 5.4.1
+
+Update `jenkins/jenkins` to version `2.452.3`
+
+## 5.4.0
+
+Introduce capability of additional mountPaths and logging file paths for config reload container
+
+## 5.3.6
+
+Update `workflow-aggregator` to version `600.vb_57cdd26fdd7`
+
+## 5.3.5
+
+Update `kubernetes` to version `4253.v7700d91739e5`
+
+## 5.3.4
+
+Update `jenkins/jenkins` to version `2.452.3-jdk17`
+## 5.3.3
+
+Update `jenkins/inbound-agent` to version `3256.v88a_f6e922152-1`
+
+## 5.3.2
+
+Update `kubernetes` to version `4248.vfa_9517757b_b_a_`
+
+## 5.3.1
+
+Fix Tiltfile deprecated value reference
+
+## 5.3.0
+
+Add `controller.topologySpreadConstraints`
+
+## 5.2.2
+
+Update `kubernetes` to version `4246.v5a_12b_1fe120e`
+
+## 5.2.1
+
+Update `jenkins/jenkins` to version `2.452.2-jdk17`
+
+## 5.2.0
+
+Add `agent.inheritYamlMergeStrategy` to allow configuring this setting on the default agent pod template.
+
+## 5.1.31
+
+Update `kubernetes` to version `4245.vf5b_83f1fee6e`
+
+## 5.1.30
+
+Add `controller.JCasC.configMapAnnotations` to allow setting annotations on the JCasC ConfigMaps.
+
+## 5.1.29
+
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.27.4`
+
+## 5.1.28
+
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.27.3`
+
+## 5.1.27
+
+Update `kubernetes` to version `4244.v4fb_b_00994a_90`
+
+## 5.1.26
+
+Update `kubernetes` to version `4238.v41b_3ef14a_5d8`
+
+## 5.1.25
+
+Update `kubernetes` to version `4236.vc06f753c3234`
+
+## 5.1.24
+
+Update `kubernetes` to version `4234.vdf3e78112369`
+
+## 5.1.23
+
+Update `kubernetes` to version `4233.vb_67a_0e11a_039`
+
+## 5.1.22
+
+Update `configuration-as-code` to version `1810.v9b_c30a_249a_4c`
+
+## 5.1.21
+
+Update `kubernetes` to version `4231.vb_a_6b_8936497d`
+
+## 5.1.20
+
+Update `kubernetes` to version `4230.vceef11cb_ca_37`
+
+## 5.1.19
+
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.27.2`
+
+## 5.1.18
+
+Update `configuration-as-code` to version `1807.v0175eda_00a_20`
+
+## 5.1.17
+
+Update `jenkins/inbound-agent` to version `3248.v65ecb_254c298-1`
+
+## 5.1.16
+
+Update `configuration-as-code` to version `1805.v1455f39c04cf`
+
+## 5.1.15
+
+Update `jenkins/jenkins` to version `2.452.1-jdk17`
+
+## 5.1.14
+
+Update `kubernetes` to version `4219.v40ff98cfb_d6f`
+
+## 5.1.13
+
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.27.1`
+
+## 5.1.12
+
+Update `git` to version `5.2.2`
+
+## 5.1.11
+
+Update `kubernetes` to version `4214.vf10083a_42e70`
+
+## 5.1.10
+
+Update `kubernetes` to version `4211.v08850dd0dfa_3`
+
+## 5.1.9
+
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.26.2`
+
+## 5.1.8
+
+Update `kubernetes` to version `4209.vc646b_71e5269`
+
+## 5.1.7
+
+Update `kubernetes` to version `4208.v4017b_a_27a_d67`
+
+## 5.1.6
+
+Update `jenkins/jenkins` to version `2.440.3-jdk17`
+
+## 5.1.5
+
+Fix Prometheus controller name.
+
+## 5.1.4
+
+Update `docker.io/bats/bats` to version `1.11.0`
+
+## 5.1.3
+
+Update `jenkins/jenkins` to version `2.440.2-jdk17`
+
+## 5.1.2
+
+Update `kubernetes` to version `4203.v1dd44f5b_1cf9`
+
+## 5.1.1
+
+Update `kubernetes` to version `4199.va_1647c280eb_2`
+
+## 5.1.0
+
+Add `agent.restrictedPssSecurityContext` to automatically inject in the jnlp container a securityContext that is suitable for the use of the restricted Pod Security Standard
+
+## 5.0.20
+
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.26.1`
+
+## 5.0.19
+
+Introduced helm-docs to automatically generate `values.yaml` documentation.
+
+## 5.0.18
+
+Update `kubernetes` to version `4193.vded98e56cc25`
+
+## 5.0.17
+
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.26.0`
+
+## 5.0.16
+
+Enable support for deleting plugin configuration files at startup.
+
+## 5.0.15
+
+Fixed changelog entries for previous version bumps
+
+
+## 5.0.14
+
+Update `jenkins/jenkins` to version `2.440.1-jdk17`
+
 ## 5.0.13
 
-Update `docker.io/kiwigrid/k8s-sidecar` to version `docker.io/kiwigrid/k8s-sidecar`
+Update `docker.io/kiwigrid/k8s-sidecar` to version `1.25.4`
 
 ## 5.0.12
 
@@ -27,7 +441,7 @@ Fix controller.sidecars.additionalSidecarContainers renaming and add tests
 
 ## 5.0.10
 
-Update `jenkins/inbound-agent` to version `jenkins/inbound-agent`
+Update `jenkins/inbound-agent` to version `3206.vb_15dcf73f6a_9-3`
 
 ## 5.0.9
 
@@ -161,7 +575,7 @@ Changes in 4.7.0 were reverted.
 
 ## 4.7.0
 
-Runs `config-reload` as an init container, in addition to the sidecar container, to ensure that JCasC YAMLS are present before the main Jenkins container starts. This should fix some race conditions and crashes on startup.
+Runs `config-reload` as an init container, in addition to the sidecar container, to ensure that JCasC YAMLs are present before the main Jenkins container starts. This should fix some race conditions and crashes on startup.
 
 ## 4.6.7
 
@@ -327,7 +741,7 @@ Disable volume mount if disableSecretMount enabled
 
 ## 4.3.9
 
-Document `.Values.agent.directConnection` in README.
+Document `.Values.agent.directConnection` in readme.
 Add default value for `.Values.agent.directConnection` to `values.yaml`
 
 ## 4.3.8
@@ -519,7 +933,7 @@ Fix path of projected secrets from `additionalExistingSecrets`.
 
 ## 4.1.7
 
-Update README with explanation on the required environmental variable `AWS_REGION` in case of using an S3 bucket.
+Update readme with explanation on the required environmental variable `AWS_REGION` in case of using an S3 bucket.
 
 ## 4.1.6
 
@@ -527,7 +941,7 @@ project adminSecret, additionalSecrets and additionalExistingSecrets instead of 
 
 ## 4.1.5
 
-Update README to fix `JAVA_OPTS` name.
+Update readme to fix `JAVA_OPTS` name.
 
 ## 4.1.4
 Update plugins
@@ -642,7 +1056,7 @@ Update default plugin versions
 
 ## 3.9.4
 
-Add JAVA_OPTIONS to the README so proxy settings get picked by jenkins-plugin-cli
+Add JAVA_OPTIONS to the readme so proxy settings get picked by jenkins-plugin-cli
 
 ## 3.9.3
 
@@ -935,7 +1349,7 @@ Update Jenkins image and appVersion to jenkins lts release version 2.263.4
 
 ## 3.1.12
 
-Added GitHub action to automate the updating of LTS releases.
+Added GitHub Action to automate the updating of LTS releases.
 
 ## 3.1.11
 
@@ -1139,7 +1553,7 @@ Added unit tests for most resources in the Helm chart.
 
 ## 2.12.1
 
-Helm chart README update
+Helm chart readme update
 
 ## 2.12.0
 
@@ -1201,7 +1615,7 @@ Fixes #19
 
 ## 2.6.0 First release in jenkinsci GitHub org
 
-Updated README for new location
+Updated readme for new location
 
 ## 2.5.2
 
@@ -1217,7 +1631,7 @@ Add an option to specify that Jenkins master should be initialized only once, du
 
 ## 2.4.1
 
-Reorder README parameters into sections to facilitate chart usage and maintenance
+Reorder readme parameters into sections to facilitate chart usage and maintenance
 
 ## 2.4.0 Update default agent image
 
@@ -1251,7 +1665,7 @@ Configure `REQ_RETRY_CONNECT` to `10` to give Jenkins more time to start up.
 
 Value can be configured via `master.sidecars.configAutoReload.reqRetryConnect`
 
-## 2.1.2 updated README
+## 2.1.2 updated readme
 
 ## 2.1.1 update credentials-binding plugin to 1.23
 
@@ -1265,7 +1679,7 @@ Only render authorizationStrategy and securityRealm when values are set.
 
 ## 2.0.0 Configuration as Code now default + container does not run as root anymore
 
-The README contains more details for this update.
+The readme contains more details for this update.
 Please note that the updated values contain breaking changes.
 
 ## 1.27.0 Update plugin versions & sidecar container
@@ -1430,7 +1844,7 @@ In recent version of configuration-as-code-plugin this is no longer necessary.
 
 ## 1.9.24
 
-Update JCasC auto-reload docs and remove stale ssh key references from version "1.8.0 JCasC auto reload works without ssh keys"
+Update JCasC auto-reload docs and remove stale SSH key references from version "1.8.0 JCasC auto reload works without SSH keys"
 
 ## 1.9.23 Support jenkinsUriPrefix when JCasC is enabled
 
@@ -1555,7 +1969,7 @@ Revert fix in `1.7.10` since direct connection is now disabled by default.
 
 Add `master.schedulerName` to allow setting a Kubernetes custom scheduler
 
-## 1.8.0 JCasC auto reload works without ssh keys
+## 1.8.0 JCasC auto reload works without SSH keys
 
 We make use of the fact that the Jenkins Configuration as Code Plugin can be triggered via http `POST` to `JENKINS_URL/configuration-as-code/reload`and a pre-shared key.
 The sidecar container responsible for reloading config changes is now `kiwigrid/k8s-sidecar:0.1.20` instead of it's fork `shadwell/k8s-sidecar`.
@@ -2083,7 +2497,7 @@ commit: 9de96faa0
 
 ## 0.32.7
 
-Fix Markdown syntax in README (#11496)
+Fix Markdown syntax in readme (#11496)
 commit: a32221a95
 
 ## 0.32.6
@@ -2313,7 +2727,7 @@ commit: e0a20b0b9
 
 ## 0.16.22
 
-avoid lint errors when adding Values.Ingress.Annotations (#7425)
+avoid linting errors when adding Values.Ingress.Annotations (#7425)
 commit: 99eacc854
 
 ## 0.16.21
@@ -2338,7 +2752,7 @@ commit: bf8180018
 
 ## 0.16.17
 
-Add Master.AdminPassword in README (#6987)
+Add Master.AdminPassword in readme (#6987)
 commit: 13e754ad7
 
 ## 0.16.16
@@ -2408,7 +2822,7 @@ commit: fc6100c38
 
 ## 0.16.1
 
-fix typo in jenkins README (#5228)
+fix typo in jenkins readme (#5228)
 commit: 3cd3f4b8b
 
 ## 0.16.0
@@ -2529,7 +2943,7 @@ commit: 9a230a6b1
 Double retry count for Jenkins test
 commit: 129c8e824
 
-Jenkins: Update README | Master.ServiceAnnotations (#2757)
+Jenkins: Update readme | Master.ServiceAnnotations (#2757)
 commit: 6571810bc
 
 ## 0.10.0
@@ -2601,7 +3015,7 @@ commit: 4af5810ff
 
 ## 0.8.4
 
-Add support for supplying JENKINS_OPTS and/or uri prefix (#1405)
+Add support for supplying JENKINS_OPTS and/or URI prefix (#1405)
 commit: 6a331901a
 
 ## 0.8.3
@@ -2811,7 +3225,7 @@ commit: 3cbd3ced6
 Remove 'Getting Started:' from various NOTES.txt. (#181)
 commit: 2f63fd524
 
-docs(\*): update READMEs to reference chart repos (#119)
+docs(\*): update readmes to reference chart repos (#119)
 commit: c7d1bff05
 
 ## 0.1.0

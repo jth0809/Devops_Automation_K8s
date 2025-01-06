@@ -140,6 +140,14 @@ jenkins:
   clouds:
   - kubernetes:
       containerCapStr: "{{ .Values.agent.containerCap }}"
+      {{- if .Values.agent.garbageCollection.enabled }}
+      garbageCollection:
+        {{- if .Values.agent.garbageCollection.namespaces }}
+        namespaces: |-
+          {{- .Values.agent.garbageCollection.namespaces | nindent 10 }}
+        {{- end }}
+        timeout: "{{ .Values.agent.garbageCollection.timeout }}"
+      {{- end }}
       {{- if .Values.agent.jnlpregistry }}
       jnlpregistry: "{{ .Values.agent.jnlpregistry }}"
       {{- end }}
@@ -164,11 +172,14 @@ jenkins:
       webSocket: true
       {{- end }}
       {{- end }}
+      skipTlsVerify: {{ .Values.agent.skipTlsVerify | default false}}
+      usageRestricted: {{ .Values.agent.usageRestricted | default false}}
       maxRequestsPerHostStr: {{ .Values.agent.maxRequestsPerHostStr | quote }}
       retentionTimeout: {{ .Values.agent.retentionTimeout | quote }}
       waitForPodSec: {{ .Values.agent.waitForPodSec | quote }}
       name: "{{ .Values.controller.cloudName }}"
       namespace: "{{ template "jenkins.agent.namespace" . }}"
+      restrictedPssSecurityContext: {{ .Values.agent.restrictedPssSecurityContext }}
       serverUrl: "{{ .Values.kubernetesURL }}"
       credentialsId: "{{ .Values.credentialsId }}"
       {{- if .Values.agent.enabled }}
@@ -247,11 +258,14 @@ jenkins:
       webSocket: true
       {{- end }}
       {{- end }}
+      skipTlsVerify: {{ .Values.agent.skipTlsVerify | default false}}
+      usageRestricted: {{ .Values.agent.usageRestricted | default false}}
       maxRequestsPerHostStr: {{ .Values.agent.maxRequestsPerHostStr | quote }}
       retentionTimeout: {{ .Values.agent.retentionTimeout | quote }}
       waitForPodSec: {{ .Values.agent.waitForPodSec | quote }}
       name: {{ $name | quote }}
       namespace: "{{ template "jenkins.agent.namespace" . }}"
+      restrictedPssSecurityContext: {{ .Values.agent.restrictedPssSecurityContext }}
       serverUrl: "{{ .Values.kubernetesURL }}"
       credentialsId: "{{ .Values.credentialsId }}"
       {{- if .Values.agent.enabled }}
@@ -469,7 +483,10 @@ Returns kubernetes pod template configuration as code
   nodeUsageMode: {{ quote .Values.agent.nodeUsageMode }}
   podRetention: {{ .Values.agent.podRetention }}
   showRawYaml: {{ .Values.agent.showRawYaml }}
-  serviceAccount: "{{ include "jenkins.serviceAccountAgentName" . }}"
+{{- $asaname := default (include "jenkins.serviceAccountAgentName" .) .Values.agent.serviceAccount -}}
+{{- if or (.Values.agent.useDefaultServiceAccount) (.Values.agent.serviceAccount) }}
+  serviceAccount: "{{ $asaname }}"
+{{- end }}
   slaveConnectTimeoutStr: "{{ .Values.agent.connectTimeout }}"
 {{- if .Values.agent.volumes }}
   volumes:
@@ -518,6 +535,7 @@ Returns kubernetes pod template configuration as code
     {{- tpl (trim .Values.agent.yamlTemplate) . | nindent 4 }}
 {{- end }}
   yamlMergeStrategy: {{ .Values.agent.yamlMergeStrategy }}
+  inheritYamlMergeStrategy: {{ .Values.agent.inheritYamlMergeStrategy }}
 {{- end -}}
 
 {{- define "jenkins.kubernetes-version" -}}
@@ -638,6 +656,10 @@ Create the HTTP port for interacting with the controller
         {{- end -}}
     {{- end -}}
     {{- end }}
+    {{- if $root.Values.controller.sidecars.configAutoReload.logging.configuration.override }}
+    - name: LOG_CONFIG
+      value: "{{ $root.Values.controller.jenkinsHome }}/auto-reload/auto-reload-config.yaml"
+    {{- end }}
 
   resources:
 {{ toYaml $root.Values.controller.sidecars.configAutoReload.resources | indent 4 }}
@@ -649,5 +671,14 @@ Create the HTTP port for interacting with the controller
       {{- if $root.Values.persistence.subPath }}
       subPath: {{ $root.Values.persistence.subPath }}
       {{- end }}
+    {{- if $root.Values.controller.sidecars.configAutoReload.logging.configuration.override }}
+    - name: auto-reload-config
+      mountPath: {{ $root.Values.controller.jenkinsHome }}/auto-reload
+    - name: auto-reload-config-logs
+      mountPath: {{ $root.Values.controller.jenkinsHome }}/auto-reload-logs
+    {{- end }}
+    {{- if $root.Values.controller.sidecars.configAutoReload.additionalVolumeMounts }}
+{{ (tpl (toYaml $root.Values.controller.sidecars.configAutoReload.additionalVolumeMounts) $root) | indent 4 }}
+    {{- end }}
 
 {{- end -}}

@@ -5,13 +5,8 @@ metadata:
   namespace: easytrip
 spec:
   selector:
-    app: {{ .Values.nginx.name }}
+    app: nginx
   ports:
-    - name: https
-      protocol: TCP
-      port: 443
-      targetPort: 443
-      nodePort: 30443
-  externalIPs:
-    - 121.164.131.58
-  type: NodePort
+    - port: 80
+      targetPort: 80
+  type: ClusterIP
