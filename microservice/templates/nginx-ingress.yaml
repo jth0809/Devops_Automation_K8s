@@ -18,7 +18,7 @@ spec:
               service:
                 name: jenkin-jenkins
                 port:
-                  number: 8080
+                  number: 8081
           - path: /
             pathType: ImplementationSpecific
             backend:

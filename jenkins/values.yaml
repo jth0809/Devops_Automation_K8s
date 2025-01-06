@@ -222,9 +222,9 @@ controller:
   # -- k8s service clusterIP. Only used if serviceType is ClusterIP
   clusterIp:
   # -- k8s service port
-  servicePort: 8080
+  servicePort: 8081
   # -- k8s target port
-  targetPort: 8080
+  targetPort: 8081
   # -- k8s node port. Only used if serviceType is NodePort
   nodePort:
 
