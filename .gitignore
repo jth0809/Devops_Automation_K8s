@@ -1,4 +1,4 @@
 .env
 *.key
 *.crt
-*configmap.yaml
+microservice/templates/configmap.yaml
