@@ -12,22 +12,6 @@ Docker-Compose는 기본적으로 각 컨테이너의 오토스케일링 기능�
 
 주요기술: Kubernetes, Jenkins, ArgoCD
 ![구조도](img/Microservice.PNG)
-# 진행과정
-로컬 쿠버네티스 환경에 Helm Chart를 이용해 ArgoCD, Jenkins 설치  
-
-Jenkins Helm Chart를 추출하여 커스텀 설정 적용  
-
-Microservice를 Helm Chart를 이용해 정의  
-
-Jenkins와 Microservice를 외부에서 접속 할 수 있도록 Ingress 설정 (Jenkins가 GitHub WebHook을 사용하기 위함)  
-
-현재 로드밸런서가 존재하지 않기 때문에 Ingress-controller를 nodeport모드로 설정 후 공유기 포트포워딩 (443 -> 3xxxx)
-
-Jenkins와 GitHub WebHook 연결 JenkinsFile 정의 (자바 스프링 빌드 및 도커 이미지 빌드, 푸시)
-
-ArgoCD에 본 리포지토리 연동 및 애플리케이션 생성
-
-Git Jenkins ArgoCD 파이프라인 구현
 
 ### 향후방향
 ArgoCD 설정 자동화, Jenkins 잡 등록 자동화, 쿠버네티스 설치, 설정 자동화  
@@ -35,11 +19,11 @@ ArgoCD 설정 자동화, Jenkins 잡 등록 자동화, 쿠버네티스 설치, �
 후보기술: Helm, Ansible
 
 ## 문제해결
-1. Jenkins는 HTTP, Microservice에서는 HTTPS를 사용하기 때문에 Ingress에서 Jenkins와 Microservice 둘 중 하나는 접속이 불가능한 문제 발생  
+Jenkins는 HTTP, Microservice에서는 HTTPS를 사용하기 때문에 Ingress에서 Jenkins와 Microservice 둘 중 하나는 접속이 불가능한 문제 
 
 백엔드 프로토콜을 HTTP로 통일하고 Ingress에 HTTPS 인증서를 적용하는 방법으로 해결 (외부에서는 HTTPS 연결으로 인식)
 
-2. Jenkins에이전트에서 Docker 명령어를 찾을 수 없다는 문제 발생
+Jenkins에이전트에서 Docker 명령어를 찾을 수 없다는 문제
 
 Docker Socket 파일을 Jenkins 에이전트에 마운트 하고 Docker in Docker 컨테이너를 에이전트에 생성해 해결  
 (Docker in Docker는 보안상 문제가 있을 수 있음)
