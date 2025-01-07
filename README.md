@@ -13,6 +13,14 @@ Docker-Compose는 기본적으로 각 컨테이너의 오토스케일링 기능�
 주요기술: Kubernetes, Jenkins, ArgoCD
 ![구조도](img/Microservice.PNG)
 
+# 실행방법
+```bash
+   git clone https://github.com/jth0809/Devops_Automation_K8s.git
+   cd Devops_Automation_K8s
+   cd <select-folder>
+   helm install <name> ./
+```
+
 ### 향후방향
 ArgoCD 설정 자동화, Jenkins 잡 등록 자동화, 쿠버네티스 설치, 설정 자동화  
 
