@@ -11,7 +11,7 @@ Docker-Compose는 기본적으로 각 컨테이너의 오토스케일링 기능�
 이 때문에 쿠버네티스로 전환하여 고가용성과 배포 자동화를 달성하기 위해 이 프로젝트를 시작합니다.  
 
 주요기술: Kubernetes, Jenkins, ArgoCD
-
+<img src="img/Microservice.png"width="300">
 # 진행과정
 로컬 쿠버네티스 환경에 Helm Chart를 이용해 ArgoCD, Jenkins 설치  
 
