@@ -15,7 +15,7 @@ Docker-Compose는 기본적으로 각 컨테이너의 오토스케일링 기능�
 ![구조도](img/Microservice.PNG)
 
 # 실행방법
-microservice의 경우 AWS Cognito 환경변수 설정이 필요합니다.
+microservice의 경우 AWS Cognito 환경변수 설정이 필요합니다.(ArgoCD에서 설정을 추천합니다.)
 
 ```bash
    git clone https://github.com/jth0809/Devops_Automation_K8s.git
