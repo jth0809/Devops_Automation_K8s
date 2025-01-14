@@ -14,6 +14,15 @@ Docker-Compose는 기본적으로 각 컨테이너의 오토스케일링 기능�
 주요기술: Kubernetes, Jenkins, ArgoCD
 ![구조도](img/Microservice.PNG)
 
+# 작업정보
+## 작업기간
+2024.12 - 2025.01(진행중)
+## 작업인원
+1명
+
+## 사용기술
+Kubernetes, Jenkins, ArgoCD, Docker, Linux
+
 # 실행방법
 microservice의 경우 AWS Cognito 환경변수 설정이 필요합니다.(ArgoCD에서 설정을 추천합니다.)
 
