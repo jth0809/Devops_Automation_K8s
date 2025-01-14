@@ -34,6 +34,6 @@ microservice의 경우 AWS Cognito 환경변수 설정이 필요합니다.(ArgoC
 ```
 
 ### 향후방향
-ArgoCD 설정 자동화, Jenkins 잡 등록 자동화, 쿠버네티스 설치, 설정 자동화  
+ArgoCD 설정 자동화, Jenkins 잡 등록 자동화, 쿠버네티스 설치 및 설정 자동화  
 
 후보기술: Helm, Ansible
