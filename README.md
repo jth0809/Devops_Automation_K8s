@@ -13,7 +13,7 @@
 
 ## 목차 (Table of Contents)
 
-1.  [프로젝트 목표](#1-프로젝트-목표)
+1.  [프로젝트 소개](#1-프로젝트-소개)
 2.  [기존 아키텍처(Docker-Compose)의 한계](#2-기존-아키텍처docker-compose의-한계)
 3.  [개선된 아키텍처 (Kubernetes & GitOps)](#3-개선된-아키텍처-kubernetes--gitops)
 4.  [기술 스택](#4-기술-스택)
@@ -22,10 +22,12 @@
 
 <br>
 
-## 1. 프로젝트 목표
-
--   Kubernetes의 Auto-scaling, Self-healing 기능을 활용하여 **고가용성** 확보
--   Jenkins와 ArgoCD를 이용한 GitOps 기반의 CI/CD 파이프라인을 구축하여 **배포 자동화** 달성
+## 1. 프로젝트 소개
+-   **프로젝트 기간**: 2024.12 ~ 2025.01 (쿠버네티스 전환)
+-   **작업 인원**: 1명
+-   **핵심 목표**:
+    -   Kubernetes의 Auto-scaling, Self-healing 기능을 활용하여 **고가용성** 확보
+    -   Jenkins와 ArgoCD를 이용한 GitOps 기반의 CI/CD 파이프라인을 구축하여 **배포 자동화** 달성
 
 <br>
 
